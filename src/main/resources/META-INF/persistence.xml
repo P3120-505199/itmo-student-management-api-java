@@ -12,6 +12,12 @@
 
         <class>ru.itmo.weblab3.entity.Student</class>
 
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action"
+                      value="create"/>
+        </properties>
+
+
     </persistence-unit>
 
 </persistence>

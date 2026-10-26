@@ -98,4 +98,37 @@ public class Student {
     public String getNotes() {
         return notes;
     }
+
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setIsuId(Integer isuId) {
+        this.isuId = isuId;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setDormitoryNumber(Integer dormitoryNumber) {
+        this.dormitoryNumber = dormitoryNumber;
+    }
+
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public void setMoveInDate(LocalDate moveInDate) {
+        this.moveInDate = moveInDate;
+    }
+
+    public void setIsForeign(Boolean isForeign) {
+        this.isForeign = isForeign;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }
