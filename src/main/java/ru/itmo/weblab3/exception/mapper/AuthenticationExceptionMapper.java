@@ -11,8 +11,13 @@ import java.util.logging.Logger;
 public class AuthenticationExceptionMapper
         implements ExceptionMapper<AuthenticationException> {
 
+    private static final Logger LOG =
+            Logger.getLogger(AuthenticationExceptionMapper.class.getName());
+
     @Override
     public Response toResponse(AuthenticationException exception) {
+        LOG.warning("Authentication failed (401): " + exception.getMessage());
+
         ErrorResponse error = new ErrorResponse(
                 401,
                 "Unauthorized",
