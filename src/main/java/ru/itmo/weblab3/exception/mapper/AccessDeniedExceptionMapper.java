@@ -11,6 +11,9 @@ import java.util.logging.Logger;
 public class AccessDeniedExceptionMapper
         implements ExceptionMapper<AccessDeniedException> {
 
+        private static final Logger LOG =
+            Logger.getLogger(AccessDeniedExceptionMapper.class.getName());
+
     @Override
     public Response toResponse(AccessDeniedException exception) {
         ErrorResponse error = new ErrorResponse(
