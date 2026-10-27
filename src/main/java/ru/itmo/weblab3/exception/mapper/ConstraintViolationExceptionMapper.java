@@ -9,10 +9,14 @@ import ru.itmo.weblab3.dto.ErrorResponse;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Provider
 public class ConstraintViolationExceptionMapper
         implements ExceptionMapper<ConstraintViolationException> {
+
+    private static final Logger LOG =
+            Logger.getLogger(ConstraintViolationExceptionMapper.class.getName());
 
     @Override
     public Response toResponse(
@@ -35,6 +39,8 @@ public class ConstraintViolationExceptionMapper
                     violation.getMessage()
             );
         }
+
+        LOG.info("Validation failed (422): " + details);
 
         ErrorResponse error = new ErrorResponse(
                 422,
