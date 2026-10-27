@@ -11,11 +11,13 @@ import java.util.logging.Logger;
 public class BadRequestExceptionMapper
         implements ExceptionMapper<BadRequestException> {
 
-        private static final Logger LOG =
-            Logger.getLogger(AuthenticationExceptionMapper.class.getName());
+    private static final Logger LOG =
+            Logger.getLogger(BadRequestExceptionMapper.class.getName());
 
     @Override
     public Response toResponse(BadRequestException exception) {
+        LOG.info("Bad request (400): " + exception.getMessage());
+
         ErrorResponse error = new ErrorResponse(
                 400,
                 "Bad Request",
