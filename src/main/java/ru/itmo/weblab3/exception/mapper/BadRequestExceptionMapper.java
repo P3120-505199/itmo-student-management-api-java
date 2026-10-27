@@ -5,6 +5,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 import ru.itmo.weblab3.dto.ErrorResponse;
+import java.util.logging.Logger;
 
 @Provider
 public class BadRequestExceptionMapper
