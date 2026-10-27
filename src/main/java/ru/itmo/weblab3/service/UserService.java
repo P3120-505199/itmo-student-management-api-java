@@ -13,9 +13,12 @@ import jakarta.transaction.Transactional;
 
 import java.util.Locale;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @ApplicationScoped
 public class UserService {
+
+    private static final Logger LOG = Logger.getLogger(UserService.class.getName());
 
     @Inject
     UserRepository userRepository;
