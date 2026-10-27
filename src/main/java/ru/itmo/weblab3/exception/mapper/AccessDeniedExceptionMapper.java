@@ -11,14 +11,13 @@ import java.util.logging.Logger;
 public class AccessDeniedExceptionMapper
         implements ExceptionMapper<AccessDeniedException> {
 
-        private static final Logger LOG =
-            Logger.getLogger(AuthenticationExceptionMapper.class.getName());
-
-        private static final Logger LOG =
+    private static final Logger LOG =
             Logger.getLogger(AccessDeniedExceptionMapper.class.getName());
 
     @Override
     public Response toResponse(AccessDeniedException exception) {
+        LOG.warning("Access denied (403): " + exception.getMessage());
+
         ErrorResponse error = new ErrorResponse(
                 403,
                 "Forbidden",
