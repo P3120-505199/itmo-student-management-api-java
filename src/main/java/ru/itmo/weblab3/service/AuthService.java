@@ -10,6 +10,7 @@ import ru.itmo.weblab3.entity.User;
 import ru.itmo.weblab3.exception.AuthenticationException;
 import ru.itmo.weblab3.repository.RefreshTokenRepository;
 import ru.itmo.weblab3.repository.UserRepository;
+import ru.itmo.weblab3.util.Logs;
 
 import java.time.Instant;
 import java.util.Locale;
@@ -37,11 +38,19 @@ public class AuthService {
         String login = req.getUsernameOrEmail().trim();
         User user = userRepository.findByUsername(login)
                 .or(() -> userRepository.findByEmail(login.toLowerCase(Locale.ROOT)))
-                .orElseThrow(() -> new AuthenticationException("Invalid credentials"));
+                .orElseThrow(() -> {
+                    LOG.warning("Login failed: unknown user '" + Logs.clean(login) + "'");
+                    return new AuthenticationException("Invalid credentials");
+                });
 
         if (!passwordService.matches(req.getPassword(), user.getPasswordHash())) {
+            LOG.warning("Login failed: wrong password for user '" + Logs.clean(user.getUsername()) + "'");
             throw new AuthenticationException("Invalid credentials");
         }
+
+        LOG.info("Login successful: username=" + Logs.clean(user.getUsername())
+                + ", role=" + user.getRole());
+
         return issueTokens(user);
     }
 
