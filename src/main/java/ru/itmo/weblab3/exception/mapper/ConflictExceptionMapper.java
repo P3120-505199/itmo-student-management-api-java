@@ -11,6 +11,9 @@ import java.util.logging.Logger;
 public class ConflictExceptionMapper
         implements ExceptionMapper<ConflictException> {
 
+        private static final Logger LOG =
+            Logger.getLogger(AuthenticationExceptionMapper.class.getName());
+
     @Override
     public Response toResponse(ConflictException exception) {
         ErrorResponse error = new ErrorResponse(
