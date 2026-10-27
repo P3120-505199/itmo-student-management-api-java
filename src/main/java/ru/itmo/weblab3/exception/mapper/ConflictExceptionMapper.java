@@ -11,11 +11,13 @@ import java.util.logging.Logger;
 public class ConflictExceptionMapper
         implements ExceptionMapper<ConflictException> {
 
-        private static final Logger LOG =
-            Logger.getLogger(AuthenticationExceptionMapper.class.getName());
+    private static final Logger LOG =
+            Logger.getLogger(ConflictExceptionMapper.class.getName());
 
     @Override
     public Response toResponse(ConflictException exception) {
+        LOG.info("Conflict (409): " + exception.getMessage());
+
         ErrorResponse error = new ErrorResponse(
                 409,
                 "Conflict",
