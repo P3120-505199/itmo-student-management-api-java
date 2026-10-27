@@ -6,6 +6,7 @@ import ru.itmo.weblab3.entity.Role;
 import ru.itmo.weblab3.entity.User;
 import ru.itmo.weblab3.exception.ConflictException;
 import ru.itmo.weblab3.repository.UserRepository;
+import ru.itmo.weblab3.util.Logs;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -45,6 +46,9 @@ public class UserService {
         user.setRole(Role.USER);
 
         userRepository.save(user);
+
+        LOG.info("User registered: username=" + Logs.clean(user.getUsername())
+                + ", role=" + user.getRole());
 
         return toDto(user);
     }
