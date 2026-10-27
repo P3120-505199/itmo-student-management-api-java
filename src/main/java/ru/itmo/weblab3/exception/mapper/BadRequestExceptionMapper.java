@@ -11,6 +11,9 @@ import java.util.logging.Logger;
 public class BadRequestExceptionMapper
         implements ExceptionMapper<BadRequestException> {
 
+        private static final Logger LOG =
+            Logger.getLogger(AuthenticationExceptionMapper.class.getName());
+
     @Override
     public Response toResponse(BadRequestException exception) {
         ErrorResponse error = new ErrorResponse(
