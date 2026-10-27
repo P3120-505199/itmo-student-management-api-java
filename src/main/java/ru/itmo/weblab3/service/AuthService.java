@@ -13,9 +13,12 @@ import ru.itmo.weblab3.repository.UserRepository;
 
 import java.time.Instant;
 import java.util.Locale;
+import java.util.logging.Logger;
 
 @ApplicationScoped
 public class AuthService {
+
+    private static final Logger LOG = Logger.getLogger(AuthService.class.getName());
 
     @Inject
     UserRepository userRepository;
