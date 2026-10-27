@@ -5,6 +5,7 @@ import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 import ru.itmo.weblab3.dto.ErrorResponse;
 import ru.itmo.weblab3.exception.AuthenticationException;
+import java.util.logging.Logger;
 
 @Provider
 public class AuthenticationExceptionMapper
